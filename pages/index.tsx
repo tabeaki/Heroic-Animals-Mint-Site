@@ -228,9 +228,9 @@ const Home: NextPage = () => {
   return (
     <div>
       <Seo
-          pageTitle={'CNPES'}
-          pageDescription={'CNPES'}
-          pageImg={'https://cnpes-site.vercel.app/_next/image?url=%2Fmain_grap.png&w=1080&q=75'}
+          pageTitle={'Heroic Animals'}
+          pageDescription={'Heroic Animals'}
+          pageImg={'https://heroic-animals-mint-site.vercel.app/_next/image?url=%2Fmain_grap.png&w=1080&q=75'}
           pageImgWidth={1920}
           pageImgHeight={1005}
       />
