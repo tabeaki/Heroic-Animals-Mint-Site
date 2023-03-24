@@ -19,8 +19,8 @@ const Seo: VFC<MetaData> = ({
   pageImgWidth,
   pageImgHeight
 }) => {
-  const defaultTitle = 'CNPES'
-  const defaultDescription = 'CNPES'
+  const defaultTitle = 'Heroic Animals'
+  const defaultDescription = 'Heroic Animals'
 
   const title = defaultTitle
   const description = defaultDescription
