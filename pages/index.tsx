@@ -29,7 +29,7 @@ const Home: NextPage = () => {
   const abi = setting.ABI;
   const contractAddress = setting.CONTRACT_ADDRESS;
   useEffect(() => {
-    const leafNodes = allowlistAddresses.map(addr => ethers.utils.solidityKeccak256(['address', 'uint16'], [addr[0] , addr[1]]));
+    const leafNodes = allowlistAddresses.map((addr: any[]) => ethers.utils.solidityKeccak256(['address', 'uint16'], [addr[0] , addr[1]]));
     const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true});
 
     const rootHash = merkleTree.getRoot();
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
     console.log("Root Hash: ", "0x" + rootHash.toString('hex'));
 
 
-    const nameMap = allowlistAddresses.map( list => list[0] );
+    const nameMap = allowlistAddresses.map( (list: any[]) => list[0] );
     let addressId = nameMap.indexOf(allowlistAddresses[0][0]);
     const claimingAddress = ethers.utils.solidityKeccak256(['address', 'uint16'], [allowlistAddresses[addressId][0] , allowlistAddresses[addressId][1]]);
 
@@ -150,9 +150,9 @@ const Home: NextPage = () => {
       const address = await signer.getAddress(); 
         
       // allowlistAddressesはALでここからウォレットアドレスの一覧を取得
-      nameMap = allowlistAddresses.map( list => list[0] );
+      nameMap = allowlistAddresses.map( (list: any[]) => list[0] );
       // リストからleafNodeを作成
-      leafNodes = allowlistAddresses.map(addr => ethers.utils.solidityKeccak256(['address', 'uint16'], [addr[0] , addr[1]]));
+      leafNodes = allowlistAddresses.map((addr: any[]) => ethers.utils.solidityKeccak256(['address', 'uint16'], [addr[0] , addr[1]]));
       // マークルツリーを作成
       merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true});
       // メタマスクのアドレスがウォレット一覧に存在する行番号を取得
