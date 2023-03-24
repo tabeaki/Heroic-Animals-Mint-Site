@@ -187,7 +187,7 @@ const Home: NextPage = () => {
     return <>
     <div className="bg-black pb-16 flex flex-wrap buttom justify-center">
       <div className='px-8 pt-8 lg:px-28 lg:py-28'>
-        <Image className="min-w-full" src="/main_grap.png" alt="Main Image" width={1024} height={676}/>
+        <Image className="min-w-full" src="/main_grap.png" alt="Main Image" width={2000} height={1125}/>
       </div>
       <div className="m-12 lg:m-32 px-12 py-6 lg:pt-8 lg:px-20 border-2 bg-black text-center border-[#FFFFFF] bg-center bg-contain bg-no-repeat">
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Heroic Animals NFT</h1>
