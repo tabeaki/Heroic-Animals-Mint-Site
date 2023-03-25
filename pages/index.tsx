@@ -112,8 +112,9 @@ const Home: NextPage = () => {
           // ALをいくつ持っているかをセットする
           setAllowlistUserAmountData(0);
         } else {
+          const contract = await new ethers.Contract(contractAddress, abi, signer);
           // AL数
-          setAlNum(num);
+          setAlNum(num - await contract.getConsumedAllocation(address));
           // 持っているAL数を取得
           setAllowlistUserAmountData(num);
         }
@@ -174,7 +175,7 @@ const Home: NextPage = () => {
         } else {
           const price = Number(setting.TOKEN_PRICE) * Number(quantity);
           // Mint関数の呼び出し
-          await contract.preMint(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price))});
+          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price))});
           alert('Starting to execute a transaction / トランザクションを開始しました');
           location.reload();
         }

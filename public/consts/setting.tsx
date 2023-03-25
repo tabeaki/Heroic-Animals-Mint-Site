@@ -8,6 +8,7 @@ export const setting = {
     TOKEN_PRICE: '200',
     ABI: [
         'function totalSupply() public view virtual override returns (uint256)',
-        'function preMint(uint _mintAmount, bytes32[] memory _merkleProof, uint alloc) public payable',
+        'function getConsumedAllocation(address target) external view virtual returns(uint16)',
+        'function mintAllLimits(uint256 amount, bytes32[] memory proof, uint256 allocation) public payable',
     ],
 }
