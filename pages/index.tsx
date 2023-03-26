@@ -177,7 +177,7 @@ const Home: NextPage = () => {
           const price = Number(setting.TOKEN_PRICE) * Number(quantity);
           // Mint関数の呼び出し
           console.log("aaaaaaaa");
-          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price)), gasLimit: 600000});
+          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price)), gasLimit: 1000000});
           alert('Starting to execute a transaction / トランザクションを開始しました');
           location.reload();
         }
@@ -194,6 +194,8 @@ const Home: NextPage = () => {
       </div>
       <div className="m-12 lg:m-32 px-12 py-6 lg:pt-8 lg:px-20 border-2 bg-black text-center border-[#FFFFFF] bg-center bg-contain bg-no-repeat">
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Heroic Animals NFT</h1>
+        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Mint hour postponed.</h1>
+        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Scheduled for 18:00 JST</h1>
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">PRICE: 200 ASTR</h1>
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']"> {mintNum} / 1000</h1>
         { (!disabledFlag && mintNum < 1000) && <a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-white font-['Impact']">please connect wallet</a>}
