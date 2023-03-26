@@ -177,7 +177,7 @@ const Home: NextPage = () => {
           const price = Number(setting.TOKEN_PRICE) * Number(quantity);
           // Mint関数の呼び出し
           console.log("aaaaaaaa");
-          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price)), gasLimit: 200000});
+          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price)), gasLimit: 600000});
           alert('Starting to execute a transaction / トランザクションを開始しました');
           location.reload();
         }
