@@ -166,16 +166,18 @@ const Home: NextPage = () => {
         hexProof = merkleTree.getHexProof(claimingAddress);    
       }
 
-      console.log("hexProof=" + hexProof);
+      //console.log("hexProof=" + hexProof);
       // Al数を取得
       const alNumber = Number(allowlistUserAmountData);
       try{
+        console.log("bbbbbb");
         if(quantity == "0" || alNumber == 0){
           alert('Cannot mint if AL count is 0 or mint count is 0. / AL数が0またはミント数が0の場合はミントできません。');
         } else {
           const price = Number(setting.TOKEN_PRICE) * Number(quantity);
           // Mint関数の呼び出し
-          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price))});
+          console.log("aaaaaaaa");
+          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price)), gasLimit: 91000});
           alert('Starting to execute a transaction / トランザクションを開始しました');
           location.reload();
         }
