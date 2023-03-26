@@ -159,10 +159,11 @@ const Home: NextPage = () => {
       // メタマスクのアドレスがウォレット一覧に存在する行番号を取得
       addressId = nameMap.indexOf(address);
       // nameMap.indexOf(address);で値がヒットしなかった場合にaddressId が-1となる
-      if( addressId != -1){
-        // 対象アドレス抽出
-        claimingAddress = ethers.utils.solidityKeccak256(['address', 'uint16'], [allowlistAddresses[0][0] , allowlistAddresses[0][1]]);
-        // ハッシュを作成
+      if( addressId == -1){
+        claimingAddress = ethers.utils.solidityKeccak256(['address', 'uint256'], [allowlistAddresses[0][0] , allowlistAddresses[0][1]]);
+        hexProof = merkleTree.getHexProof(claimingAddress);    
+      }else{
+        claimingAddress = ethers.utils.solidityKeccak256(['address', 'uint256'], [allowlistAddresses[addressId][0] , allowlistAddresses[addressId][1]]);
         hexProof = merkleTree.getHexProof(claimingAddress);    
       }
 
@@ -177,7 +178,7 @@ const Home: NextPage = () => {
           const price = Number(setting.TOKEN_PRICE) * Number(quantity);
           // Mint関数の呼び出し
           console.log("aaaaaaaa");
-          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price)), gasLimit: 1000000});
+          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price)), gasLimit: 600000});
           alert('Starting to execute a transaction / トランザクションを開始しました');
           location.reload();
         }
