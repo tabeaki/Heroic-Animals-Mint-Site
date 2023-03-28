@@ -69,7 +69,7 @@ const Home: NextPage = () => {
         // TotalCount取得
         const mintNumber = (await contract.totalSupply()).toString();
         setMintNum(mintNumber);
-        getMerkleData();
+        //getMerkleData();
       } catch(e) {
         console.log(e);
       }
@@ -122,7 +122,7 @@ const Home: NextPage = () => {
 
     const mintQuantityPlus = async () =>{
       // ★AL条件無くなった時のロジックを考える必要があり。
-      if(mintQuantity == alNum){
+      if(mintQuantity == 100){//alNum){
         return;
       } else {
         setmintQuantity(mintQuantity + 1);
@@ -166,21 +166,15 @@ const Home: NextPage = () => {
         claimingAddress = ethers.utils.solidityKeccak256(['address', 'uint16'], [allowlistAddresses[addressId][0] , allowlistAddresses[addressId][1]]);
         hexProof = merkleTree.getHexProof(claimingAddress);    
       }
-      console.log("claimingAddress=" + claimingAddress);
-      //console.log("hexProof=" + hexProof);
       // Al数を取得
       const alNumber = Number(allowlistUserAmountData);
       try{
-        console.log("bbbbbb");
         if(quantity == "0" || alNumber == 0){
           alert('Cannot mint if AL count is 0 or mint count is 0. / AL数が0またはミント数が0の場合はミントできません。');
         } else {
           const price = Number(setting.TOKEN_PRICE) * Number(quantity);
           // Mint関数の呼び出し
-          console.log("quantity=" + quantity);
-          console.log("hexProof=" +hexProof);
-          console.log("alNumber=" + alNumber);
-          await contract.mintAllLimits(quantity, hexProof, alNumber, {value: ethers.utils.parseEther(String(price)), gasLimit: 600000});
+          await contract.mint(quantity, {value: ethers.utils.parseEther(String(price)), gasLimit: 600000});
           alert('Starting to execute a transaction / トランザクションを開始しました');
           location.reload();
         }
@@ -197,13 +191,12 @@ const Home: NextPage = () => {
       </div>
       <div className="m-12 lg:m-32 px-12 py-6 lg:pt-8 lg:px-20 border-2 bg-black text-center border-[#FFFFFF] bg-center bg-contain bg-no-repeat">
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Heroic Animals NFT</h1>
-        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Mint hour postponed.</h1>
-        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Scheduled for 18:00 JST</h1>
+        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Public Mint</h1>
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">PRICE: 200 ASTR</h1>
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']"> {mintNum} / 1000</h1>
         { (!disabledFlag && mintNum < 1000) && <a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-white font-['Impact']">please connect wallet</a>}
-        { (disabledFlag && mintNum < 1000) && <a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-white font-['Impact']">{alNum} </a>}
-        { (disabledFlag && mintNum < 1000) && <a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-[#99CDDB] font-['Impact'] ">AL</a>}<br/>
+        {/* (disabledFlag && mintNum < 1000) && <a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-white font-['Impact']">{alNum} </a> */}
+        {/* (disabledFlag && mintNum < 1000) && <a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-[#99CDDB] font-['Impact'] ">AL</a> */}<br/>
         
         <div className="pt-2 lg:pt-6 pb-7">
         { (disabledFlag && mintNum < 1000) && <button type="button" className="cursor-pointer text-2xl lg:text-3xl inline-flex flex-shrink-0 justify-center items-center gap-2 h-[1.375rem] w-[1.375rem] lg:h-[2.375rem] lg:w-[2.375rem]

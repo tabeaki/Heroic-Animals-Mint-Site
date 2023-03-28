@@ -10,5 +10,6 @@ export const setting = {
         'function totalSupply() public view virtual override returns (uint256)',
         'function getConsumedAllocation(address target) external view virtual returns(uint16)',
         'function mintAllLimits(uint256 amount, bytes32[] memory proof, uint256 allocation) public payable',
+        'function mint(uint256 amount) external payable',
     ],
 }
