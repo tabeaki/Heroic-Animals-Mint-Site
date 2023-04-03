@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Seo from './components/Seo';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import NFT7 from '../public/NFT7.svg';
+import NFT20 from '../public/NFT20.svg';
 
 import { allowlistAddresses }  from "../public/consts/allowlist";
 import { setting }  from "../public/consts/setting";
@@ -82,16 +84,22 @@ const Home: NextPage = () => {
       </div>
       <div className="m-12 lg:m-32 px-12 py-6 lg:pt-8 lg:px-20 border-2 bg-black text-center border-[#FFFFFF] bg-center bg-contain bg-no-repeat">
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Heroic Animals Utility</h1>
-        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">your HAF</h1>
-        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']"> {balanceNum.toString()}</h1>
+        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">your HAF is {balanceNum.toString()}</h1>
         { (!disabledFlag && balanceNum < 1000) && <a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-white font-['Impact']">please connect wallet</a>}
         { (!disabledFlag && balanceNum < 1000) && <button type="button" className="text-xl lg:text-2xl py-1 lg:py-3 px-12 lg:px-24 inline-flex justify-center items-center gap-2 rounded-full border border-transparent
         bg-[#FFFFFF] border-yellow-200 font-['Impact'] text-[#99CDDB] hover:yellow-500 hover:bg-[#99CDDB] hover:text-[#FFFFFF] hover:border-[#FFFFFF]
           focus:outline-none focus:ring-2 focus:ring-yellow-200 focus:ring-offset-2 transition-all dark:focus:ring-offset-gray-800" onClick={() => connectWallet()}>
         CONNECT WALLET</button>}
-        { (disabledFlag && 7 < balanceNum && balanceNum < 20) && <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfOawiz3pSWUYJB3-YIQ7SUdMsv1SQJ9NWFNk92uzpUH9nfFA/viewform?embedded=true" width="640" height="375" >読み込んでいます…</iframe>}
-        { (disabledFlag && 20 < balanceNum) && <a>aaaa</a>}
       </div>
+      { (disabledFlag && 7 < balanceNum && balanceNum < 20) && <div className='px-8 lg:px-28'>
+        <Image className="min-w-full" src="/NFT7.jpeg" alt="My SVG Image" width={2000} height={1413}/>
+      </div>}
+      { (disabledFlag && 20 < balanceNum) && <div className='px-8 lg:px-28'>
+        <Image className="min-w-full" src="/NFT20.jpeg" alt="My SVG Image" width={2000} height={1413}/>
+      </div>}
+      { (disabledFlag && 7 < balanceNum && balanceNum < 20) && <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfOawiz3pSWUYJB3-YIQ7SUdMsv1SQJ9NWFNk92uzpUH9nfFA/viewform?embedded=true" width="640" height="1200" >読み込んでいます…</iframe>}
+      { (disabledFlag && 20 < balanceNum) && <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScb0LgluvSKe6yZXlAKgn5CwKi5sLDohlgN6SVLo0rucuIgWg/viewform?embedded=true"  width="640" height="1200" >読み込んでいます…</iframe>}
+
     </div>
     </>
   }
