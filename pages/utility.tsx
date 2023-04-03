@@ -82,10 +82,10 @@ const Home: NextPage = () => {
       <div className='px-8 pt-8 lg:px-28 lg:py-28'>
         <Image className="min-w-full" src="/main_grap.png" alt="Main Image" width={2000} height={1125}/>
       </div>
-      <div className="m-12 lg:m-32 px-12 py-6 lg:pt-8 lg:px-20 border-2 bg-black text-center border-[#FFFFFF] bg-center bg-contain bg-no-repeat">
+      <div className="px-12 py-8 lg:pt-8 lg:px-20 border-2 bg-black text-center border-[#FFFFFF] bg-center bg-contain bg-no-repeat">
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Heroic Animals Utility</h1>
         <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">your HAF is {balanceNum.toString()}</h1>
-        { (!disabledFlag && balanceNum < 1000) && <a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-white font-['Impact']">please connect wallet</a>}
+        { (!disabledFlag && balanceNum < 1000) && <a className="text-2xl lg:text-3xl text-white font-['Impact']">please connect wallet</a>}<br/><br/><br/>
         { (!disabledFlag && balanceNum < 1000) && <button type="button" className="text-xl lg:text-2xl py-1 lg:py-3 px-12 lg:px-24 inline-flex justify-center items-center gap-2 rounded-full border border-transparent
         bg-[#FFFFFF] border-yellow-200 font-['Impact'] text-[#99CDDB] hover:yellow-500 hover:bg-[#99CDDB] hover:text-[#FFFFFF] hover:border-[#FFFFFF]
           focus:outline-none focus:ring-2 focus:ring-yellow-200 focus:ring-offset-2 transition-all dark:focus:ring-offset-gray-800" onClick={() => connectWallet()}>
